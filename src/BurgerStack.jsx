@@ -1,22 +1,18 @@
+import Ingredient from '../Ingredient';
+
 const BurgerStack = ({ ingredients, clearBurger }) => {
   return (
     <div>
       <h2>Your Burger</h2>
-      <ul>
-        {ingredients.map((ingredient, idx) => (
-          <li
-            key={idx}
-            style={{
-              backgroundColor: ingredient.color,
-              padding: '0.5rem',
-              margin: '0.25rem',
-              listStyle: 'none',
-            }}
-          >
-            {ingredient.name}
-          </li>
-        ))}
-      </ul>
+      {ingredients.length === 0 ? (
+        <p>No Ingredients</p>
+      ) : (
+        <ul>
+          {ingredients.map((ingredient, idx) => (
+            <Ingredient key={idx} ingredient={ingredient} />
+          ))}
+        </ul>
+      )}
       <button onClick={clearBurger}>Clear Burger</button>
     </div>
   );
